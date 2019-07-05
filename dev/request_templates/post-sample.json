@@ -1,0 +1,9 @@
+#set($inputRoot = $input.path('$'))
+{
+  "TableName": "lab_dynamodb",
+  "Item": {
+    "primary_key": {
+      "S": "${inputRoot.key}"
+    }
+  }
+}
