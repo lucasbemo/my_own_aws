@@ -1,0 +1,9 @@
+#set($inputRoot = $input.path('$'))
+{
+  "TableName": "contacts",
+  "Item": {
+    "document": {
+      "S": "${inputRoot.document}"
+    }
+  }
+}

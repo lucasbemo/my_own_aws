@@ -1,23 +1,29 @@
 variable "api_name" {
     type = "string"
     description = "Name of the API"
-    default = "callme_mock_api"
 }
+
 variable "api_description" {
     type = "string"
     description = "Short description about the API"
-    default = "Test API"
 }
-variable "resource_path" {
+
+variable "api_endpoint_configuration" {
   type = "string"
 }
-variable "http_method" {
+
+variable "api_request_validator_name" {
   type = "string"
 }
-variable "authorization" {
+
+variable "api_request_validator_body" {
   type = "string"
-  default = "NONE"
 }
-variable "integration_http_method" {
+
+variable "api_request_validator_parameters" {
+  type = "string"
+}
+
+variable "api_path_open_api_doc" {
   type = "string"
 }

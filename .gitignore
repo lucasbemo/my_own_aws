@@ -2,15 +2,15 @@
 *.project
 *.classpath
 
-**/.settings
-**/target
-**/out
+*/.settings
+*/target
+*/out
 
-**/.gradle*
-**/.idea
-**/bin
-**/build
-**/gradle*
+*/.gradle*
+*/.idea
+*/bin
+*/build
+*/gradle*
 
 *tfstate*
 *.terraform

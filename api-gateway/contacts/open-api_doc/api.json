@@ -1,0 +1,82 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "2019-10-06T20:19:51Z",
+      "title": "Contacts"
+    },
+    "host": "ur289jmeb3.execute-api.us-east-1.amazonaws.com",
+    "basePath": "/release-candidate",
+    "schemes": [
+      "https"
+    ],
+    "paths": {
+      "/contacts": {
+        "post": {
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "PostContact",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/PostContact"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "200 response",
+              "schema": {
+                "$ref": "#/definitions/Empty"
+              }
+            }
+          },
+          "security": [
+            {
+              "sigv4": []
+            }
+          ]
+        }
+      }
+    },
+    "securityDefinitions": {
+      "sigv4": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header",
+        "x-amazon-apigateway-authtype": "awsSigv4"
+      }
+    },
+    "definitions": {
+      "Empty": {
+        "type": "object",
+        "title": "Empty Schema"
+      },
+      "PostContact": {
+        "type": "object",
+        "properties": {
+          "document": {
+            "type": "string"
+          }
+        },
+        "title": "contactsPutItem"
+      }
+    },
+    "x-amazon-apigateway-policy": {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Sid": "",
+          "Effect": "Allow",
+          "Principal": "*",
+          "Action": "execute-api:Invoke",
+          "Resource": "*"
+        }
+      ]
+    }
+  }
