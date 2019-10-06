@@ -19,7 +19,7 @@ module "api_gateway_contacts" {
   api_request_validator_body                  = true
   api_request_validator_parameters            = true
   
-  api_path_open_api_doc                       = "../api-gateway/contacts/open-api_doc/api.json"
+  api_path_open_api_doc                       = "../api-gateway/contacts/open-api_doc/Contacts-release-candidate-swagger-postman.json"
 }
 
 module "api_gateway_resource_contacts" {
