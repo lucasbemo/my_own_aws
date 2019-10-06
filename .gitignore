@@ -12,5 +12,5 @@
 **/build
 **/gradle*
 
-**/dev/tfstate*
-**/dev/.terraform
+*/dev/tfstate*
+*/dev/.terraform
