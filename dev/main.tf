@@ -49,6 +49,11 @@ module "api_gateway_resource_contacts_method_post_to_dynamodb" {
 
   model_name                                  = "PostContact"
   model_post_template_file                    = "../api-gateway/contacts/request_templates/contacts-post-template.json"
+
+  api_method_doc_resource_path                = "contacts"
+  api_method_doc_summary                      = "Incluir Contato"
+  api_method_doc_description                  = "Incluir Novo Contato"
+  api_method_response_ok_doc_ok_msg           = "OK"
 }
 ########################################################################################################################
 ################################################################################################################

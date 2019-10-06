@@ -1,3 +1,5 @@
+########################################################################################################################
+#################################################################################################################### API
 resource "aws_api_gateway_rest_api" "rest_api" {
   name            = "${var.api_name}"
   description     = "${var.api_description}"
@@ -26,6 +28,9 @@ resource "aws_api_gateway_request_validator" "request_validator" {
   validate_request_parameters = "${var.api_request_validator_parameters}"
 }
 
+########################################################################################################################
+########################################################################################################## Documentation
+
 resource "aws_api_gateway_documentation_part" "api_doc" {
   location {
     type = "API"
@@ -33,4 +38,8 @@ resource "aws_api_gateway_documentation_part" "api_doc" {
 
   properties = "${file("${var.api_path_open_api_doc}")}"
   rest_api_id = "${aws_api_gateway_rest_api.rest_api.id}"
+
+  depends_on = [
+    "aws_api_gateway_rest_api.rest_api"
+  ]
 }

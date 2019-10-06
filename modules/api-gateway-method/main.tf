@@ -1,4 +1,5 @@
-## Flux Going into
+########################################################################################################################
+################################################################################################# Flux: User -> Dynamodb
 resource "aws_api_gateway_method" "api_method" {
   rest_api_id   = "${var.rest_api_id}"
   resource_id   = "${var.resource_id}"
@@ -24,7 +25,8 @@ resource "aws_api_gateway_integration" "api_integration_dynamodb" {
   }
 }
 
-## Flux Back to client
+########################################################################################################################
+################################################################################################# Flux: Dynamodb -> User
 
 resource "aws_api_gateway_integration_response" "integration_response" {
   rest_api_id       = "${var.rest_api_id}"
@@ -49,11 +51,46 @@ resource "aws_api_gateway_method_response" "method_response_ok" {
   }
 }
 
-## Other resources
+########################################################################################################################
+################################################################################################################### Model
 
 resource "aws_api_gateway_model" "model" {
   rest_api_id = "${var.rest_api_id}"
   name = "${var.model_name}"
   content_type = "application/json"
   schema = "${file("${var.model_post_template_file}")}"
+}
+
+########################################################################################################################
+########################################################################################################## Documentation
+
+resource "aws_api_gateway_documentation_part" "api_method_documentation" {
+  location {
+    type = "METHOD"
+    method = "${var.api_method_http_method}"
+    path = "${var.api_method_doc_resource_path}"
+  }
+
+  properties = "{\"sumary\": \"${var.api_method_doc_summary}\", \"description\": \"${var.api_method_doc_description}\"}"
+  rest_api_id = "${var.rest_api_id}"
+
+  depends_on = [
+    "aws_api_gateway_method.api_method"
+  ]
+}
+
+resource "aws_api_gateway_documentation_part" "api_method_response_ok_documentation" {
+  location {
+    type = "RESPONSE"
+    method = "${var.api_method_http_method}"
+    status_code = "${aws_api_gateway_method_response.method_response_ok.status_code}"
+    path = "${var.api_method_doc_resource_path}"
+  }
+
+  properties = "{\"description\": \"${var.api_method_response_ok_doc_ok_msg}\"}"
+  rest_api_id = "${var.rest_api_id}"
+
+  depends_on = [
+    "aws_api_gateway_method_response.method_response_ok"
+  ]
 }

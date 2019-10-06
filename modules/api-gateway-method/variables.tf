@@ -45,3 +45,19 @@ variable "model_name" {
 variable "model_post_template_file" {
   type = "string"
 }
+
+variable "api_method_doc_resource_path" {
+  type = "string"
+}
+
+variable "api_method_doc_summary" {
+  type = "string"
+}
+
+variable "api_method_doc_description" {
+  type = "string"
+}
+
+variable "api_method_response_ok_doc_ok_msg" {
+  type = "string"
+}
