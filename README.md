@@ -9,6 +9,7 @@ This module creates an AWS API Gateway, including a Mock andpoint.
 
 * Python 2.7 or higher
 * Linux/Unix/Windows
+* Terraform 12.9 or higher
 
 ## Executing the project
 
